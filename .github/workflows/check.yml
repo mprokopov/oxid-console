@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+    - name: enable mysql
+      run: sudo systemctl start mysql.service
     - name: Validate composer.json
       run: composer validate
     - name: validate php syntax
@@ -18,8 +20,6 @@ jobs:
     - name: phpcs psr12
       run: php phpcs.phar --standard=PSR12 --extensions=php --ignore=vendor .
 #    - name: phplint, phpmd ...
-    - name: enable mysql
-      run: sudo systemctl start mysql.service
   tests:
     needs: stand_alone_checks
     strategy:
