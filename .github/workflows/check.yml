@@ -18,6 +18,8 @@ jobs:
     - name: phpcs psr12
       run: php phpcs.phar --standard=PSR12 --extensions=php --ignore=vendor .
 #    - name: phplint, phpmd ...
+    - name: enable mysql
+      run: sudo systemctl start mysql.service
   tests:
     needs: stand_alone_checks
     strategy:
@@ -32,8 +34,6 @@ jobs:
       DB_HOST: "localhost;unix_socket=/var/run/mysqld/mysqld.sock"
     steps:
     - uses: actions/checkout@v1
-    - name: enable mysql
-      run: sudo systemctl start mysql.service
     - name: setup oxid
       run: bash /var/www/oxideshop/scripts/setupOxid.sh
     - name: install this package into oxid
