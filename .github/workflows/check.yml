@@ -33,7 +33,7 @@ jobs:
       image: oxidprojects/oxid-test:${{matrix.tag}}
       options: -v /var/run/mysqld/mysqld.sock:/var/run/mysqld/mysqld.sock
     env:
-      DB_HOST: "localhost;unix_socket=/var/run/mysqld/mysqld.sock"
+      DB_HOST: "127.0.0.1;unix_socket=/var/run/mysqld/mysqld.sock"
     steps:
     - uses: actions/checkout@v1
     - name: setup oxid
