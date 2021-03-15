@@ -8,7 +8,9 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: enable mysql
-      run: sudo systemctl start mysql.service
+      run: |
+        sudo systemctl enable mysql.service
+        sudo systemctl start mysql.service
     - name: Validate composer.json
       run: composer validate
     - name: validate php syntax
