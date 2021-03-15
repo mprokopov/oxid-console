@@ -40,9 +40,7 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_ROOT_PASSWORD: oxid
-          MYSQL_PASSWORD: oxid
-          MYSQL_USER: oxid
+          MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: oxid
         ports:
           - 3306
